@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>collection — matter out of place</title>
+  <link rel="stylesheet" href="collection.css">
+  <script src="collection.js" defer></script>
+</head>
+<body>
+  <main class="collection-page">
+    <a class="site-title" href="home.html">matter out of <span class="title-place">place</span></a>
+    <section class="image-grid" id="image-grid" aria-label="image collection"></section>
+  </main>
+
+  <dialog class="image-viewer" id="image-viewer" aria-label="image details">
+    <button class="viewer-close" id="viewer-close" type="button">close</button>
+    <img class="viewer-image" id="viewer-image" alt="">
+    <aside class="viewer-notes" id="viewer-notes" aria-live="polite"></aside>
+  </dialog>
+</body>
+</html>

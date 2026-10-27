@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>games</title>
+  <script>
+    const game = new URLSearchParams(window.location.search).get('game');
+    document.documentElement.dataset.game = ['placement', 'mosaic', 'lights'].includes(game) ? game : 'placement';
+  </script>
+  <link rel="stylesheet" href="game.css">
+  <script src="games.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@2.3.3/lib/p5.min.js" defer></script>
+  <script src="lights.js" defer></script>
+</head>
+<body>
+  <main class="play-page game-screen placement-screen">
+    <a class="back" href="home.html">matter out of <span class="title-place">place</span></a>
+    <section class="placement-game" aria-label="placement game">
+      <!-- temporary build shortcut; remove when placement testing is complete -->
+      <button class="skip-to-last" id="skip-to-last" type="button">skip to last image</button>
+      <div class="score" id="score" aria-live="polite"></div>
+      <div class="place-stage" id="place-stage">
+        <div class="target"><img id="target-image" src="assets/holes%20compressed/IMG_8401%20Medium.png" alt="matching hole"></div>
+        <div class="piece-wrap"><img id="piece-image" src="assets/cutouts%20compressed/IMG_8401%20Medium.png" alt="drag the cutout into the matching hole"></div>
+      </div>
+    </section>
+    <section class="placement-results results-card" id="placement-results" aria-label="placement results" hidden>
+      <h1>your average score</h1>
+      <p id="average-score">0.00%</p>
+      <a class="play-again" href="games.html?game=placement&amp;new=1">play again</a>
+    </section>
+  </main>
+
+  <main class="play-page game-screen mosaic-screen">
+    <a class="back" href="home.html">matter out of <span class="title-place">place</span></a>
+    <section class="mosaic-game" aria-label="mosaic game">
+      <div class="mosaic-wrap">
+        <div class="mosaic-image" id="mosaic-frame">
+          <img id="mosaic-image" src="assets/cutouts%20compressed/IMG_8401%20Medium.png" alt="mosaic image">
+          <span class="lens" id="lens" aria-hidden="true"></span>
+        </div>
+      </div>
+      <form class="guess" id="guess-form">
+        <input id="guess-input" aria-label="your guess" placeholder="type your guess" autocomplete="off">
+        <button type="submit" aria-label="reveal image">reveal</button>
+        <button id="another-image" type="button" aria-label="next image">next</button>
+      </form>
+    </section>
+  </main>
+
+  <main class="play-page game-screen lights-screen">
+    <a class="back" href="home.html">matter out of <span class="title-place">place</span></a>
+    <section class="lights-game" aria-label="lights out game">
+      <div class="lights-grid" id="lights-grid">
+        <button class="tile" type="button" data-tile="0" aria-label="flip tile"><img src="assets/cutouts compressed/IMG_8401 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="1" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0724 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="2" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0733 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="3" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0743 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="4" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0751 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="5" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0752 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="6" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0797 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="7" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0803 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="8" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0812 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="9" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0820 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="10" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0830 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="11" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0847 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="12" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0850 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="13" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0854 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="14" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0860 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="15" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0886 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="16" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0893 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="17" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0900 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="18" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0909 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="19" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0915 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="20" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0926 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="21" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0933 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="22" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0937 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="23" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0940 Medium.png" alt=""></button>
+        <button class="tile" type="button" data-tile="24" aria-label="flip tile"><img src="assets/cutouts compressed/_MG_0943 Medium.png" alt=""></button>
+      </div>
+      <button class="restart" id="new-board" type="button" aria-label="reset board">reset</button>
+    </section>
+  </main>
+</body>
+</html>

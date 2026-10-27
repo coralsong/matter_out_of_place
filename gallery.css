@@ -1,0 +1,50 @@
+.hover_imgs {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    gap: 12px;
+    align-items: start;
+}
+
+.hover_imgs .holes img,
+.hover_imgs .cutouts img {
+    transition: opacity 180ms ease;
+}
+
+.hover_imgs .holes img {
+    opacity: 0;
+}
+
+.hover_imgs .cutouts img {
+    opacity: 1;
+}
+
+.hover_imgs:hover .holes img {
+    opacity: 1;
+}
+
+.hover_imgs:hover .cutouts img {
+    opacity: 0;
+}
+
+.holes,
+.cutouts {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    gap: 12px;
+    align-items: start;
+}
+
+.cutouts {
+    position: relative;
+    z-index: 1;
+}
+
+.holes img,
+.cutouts img {
+    display: block;
+    width: 300px;
+    height: auto;
+}
